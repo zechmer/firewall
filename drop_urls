@@ -1,0 +1,25 @@
+echo "-- 195.201.20.181 mani.smash-net.org"
+iptables -A INPUT  -s 195.201.20.181 -j DROP
+iptables -A OUTPUT -d 195.201.20.181 -j DROP
+
+echo "-- ec2-54-164-183-13.compute-1.amazonaws.com"
+iptables -A INPUT  -s 54.164.183.13 -j DROP
+iptables -A OUTPUT -d 54.164.183.13 -j DROP
+
+# Akamai Technologies
+iptables -A INPUT  -m iprange --src-range 2.16.0.0-2.23.255.255 -j DROP
+iptables -A OUTPUT -m iprange --dst-range 2.16.0.0-2.23.255.255 -j DROP
+
+
+echo "-- blocklist 1"
+#./blocklist1_tmp
+echo "-- blocklist 2"
+#./blocklist2_tmp
+echo "-- blocklist 3"
+#./blocklist3_tmp
+echo "-- blocklist 4"
+#./blocklist4_tmp
+echo "-- blocklist 5"
+#./blocklist5_tmp
+echo "-- blocklist 6"
+#./blocklist6_tmp

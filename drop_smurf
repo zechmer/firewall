@@ -1,0 +1,7 @@
+echo "-- Drop ICMP SMURF attack"
+iptables -A INPUT -p icmp --icmp-type address-mask-request -j DROP
+iptables -A INPUT -p icmp --icmp-type timestamp-request    -j DROP
+iptables -A INPUT -p icmp --icmp-type router-solicitation  -j DROP
+iptables -A INPUT -p icmp -m limit --limit 2/second -j ACCEPT
+ip6tables -A INPUT -p icmp -m limit --limit 2/second -j ACCEPT
+

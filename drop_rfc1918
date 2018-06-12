@@ -1,0 +1,5 @@
+echo "-- Drop RFC1918 packets networks 10.0.0.0/8 and 172.16.0.0/12"
+iptables -A INPUT  -s 10.0.0.0/8    -j DROP
+iptables -A INPUT  -s 172.16.0.0/12 -j DROP
+iptables -A OUTPUT -d 10.0.0.0/8    -j DROP
+iptables -A OUTPUT -d 172.16.0.0/12 -j DROP

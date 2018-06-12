@@ -1,0 +1,12 @@
+echo "+-------------------------------------------------+"
+echo "|              Flushing all chains                |"
+echo "+-------------------------------------------------+"
+echo "  Flushing built-in chains"
+iptables  -F
+ip6tables -F
+echo "  Flushing user-defined chains"
+iptables  -X
+ip6tables -X
+echo "  Zeroing counters"
+iptables  -Z
+ip6tables -Z

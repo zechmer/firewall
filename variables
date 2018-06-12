@@ -1,0 +1,6 @@
+echo " Setting variables"
+# local subnet...
+LO_SUB="192.168.2.0/24"
+#VPN_SUBNET  ="132.176.134.0/24"
+
+#INTERFACE="eth0"

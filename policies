@@ -1,0 +1,16 @@
+echo "+-------------------------------------------------+"
+echo "|                Applying policies                |"
+echo "+-------------------------------------------------+"
+echo "  P Dropping input packets"
+iptables  -P INPUT   DROP
+ip6tables -P INPUT   DROP
+echo "  P Dropping output packets"
+iptables  -P OUTPUT  DROP
+ip6tables -P OUTPUT  DROP
+echo "  P Dropping forwarded packets"
+iptables  -P FORWARD DROP
+ip6tables -P FORWARD DROP
+
+# Allow return connections initiated from the host
+#iptables  -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+#ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT

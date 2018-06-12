@@ -1,0 +1,9 @@
+./flush
+./policies
+#iptables -P   INPUT DROP
+#iptables -P  OUTPUT DROP
+#iptables -P FORWARD DROP
+
+#ip6tables -P   INPUT DROP
+#ip6tables -P  OUTPUT DROP
+#ip6tables -P FORWARD DROP

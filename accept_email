@@ -1,0 +1,40 @@
+echo "++ Accepting SSMTP, IMAPS, Submission"
+#IMAP
+imap_fernuni="owa.fernuni-hagen.de"
+imap_web="imap.web.de"
+imap_mail="imap.mail.de"
+imap_live="imap-mail.outlook.com"
+imap_gmail="imap.gmail.com"
+
+# 132.176.129.42
+# 132.176.129.7
+smtp_fernuni="smtp.fernuni-hagen.de"
+
+smtp_web="smtp.web.de"
+smtp_mail="smtp.mail.de"
+smtp_live="smtp-mail.outlook.com"
+smtp_gmail="smtp.gmail.com"
+
+iptables -A INPUT  -p tcp --sport 587 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 587 -d $smtp_fernuni -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 587 -d $smtp_live    -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 587 -d $smtp_web     -j ACCEPT
+
+# gmail seems to be special, since this does not work..
+iptables -A INPUT  -p tcp --sport 465 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 465 -d $smtp_gmail   -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 465 -d $smtp_mail    -j ACCEPT
+
+iptables -A INPUT -p tcp  --sport 993 -s $imap_fernuni -j ACCEPT # IMAPS
+iptables -A INPUT -p tcp  --sport 993 -s $imap_web     -j ACCEPT # IMAPS
+iptables -A INPUT -p tcp  --sport 993 -s $imap_mail    -j ACCEPT # IMAPS
+
+
+iptables -A INPUT -p tcp  --sport 993 -s $imap_live    -j ACCEPT # IMAPS
+iptables -A INPUT -p tcp  --sport 993 -s $imap_gmail   -j ACCEPT # IMAPS
+
+#iptables -A INPUT  -p tcp --sport 993 -j ACCEPT		# this seems to be necessary for live.de and gmail
+iptables -A OUTPUT -p tcp --dport 993 -j ACCEPT
+
+
+

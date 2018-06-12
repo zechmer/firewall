@@ -1,0 +1,2 @@
+echo "++ Accepting SIP"
+iptables -I OUTPUT -p tcp -m tcp --dport 5060 -j ACCEPT

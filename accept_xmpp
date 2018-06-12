@@ -1,0 +1,2 @@
+echo "++ Accepting XMPP von port 5222"
+iptables -I OUTPUT 2 -p tcp -m tcp --dport 5222 -j ACCEPT

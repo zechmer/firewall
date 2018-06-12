@@ -1,0 +1,16 @@
+echo "++ Accepting https for router for local 192 network"
+
+# Connection@home
+iptables  -A INPUT  -j ACCEPT -s router -d 192.168.2.0/24 -p tcp -m state --state ESTABLISHED,RELATED 
+iptables  -A OUTPUT -j ACCEPT -d router -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 443
+iptables  -A OUTPUT -j ACCEPT -d router -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 80
+
+iptables  -A INPUT  -j ACCEPT -s speedport.ip -d 192.168.2.0/24 -p tcp -m state --state ESTABLISHED,RELATED 
+iptables  -A OUTPUT -j ACCEPT -d speedport.ip -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 443
+iptables  -A OUTPUT -j ACCEPT -d speedport.ip -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 80
+
+iptables  -A INPUT  -j ACCEPT -s diskstation -d 192.168.2.0/24 -p tcp -m state --state ESTABLISHED,RELATED 
+iptables  -A OUTPUT -j ACCEPT -d diskstation -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 443
+iptables  -A OUTPUT -j ACCEPT -d diskstation -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 80
+
+

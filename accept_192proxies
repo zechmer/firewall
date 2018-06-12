@@ -1,0 +1,8 @@
+echo "++ Accepting proxy connections on 192 subnet"
+iptables -A OUTPUT -p tcp -s 192.168.2.0/24 -d 192.168.2.0/24 --dport 8118 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -s 192.168.2.0/24 -d 192.168.2.0/24 --dport 3128 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT  -p tcp -s 192.168.2.0/24 -d 192.168.2.0/24 --sport 8118 -m state --state ESTABLISHED -j ACCEPT
+
+echo "++ Accepting local privoxy connections"
+iptables -A OUTPUT -p tcp -s 127.0.0.1 -d 127.0.0.1 --dport 8118 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT  -p tcp -s 127.0.0.1 -d 127.0.0.1 --sport 8118 -m state --state ESTABLISHED -j ACCEPT

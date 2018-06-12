@@ -1,0 +1,5 @@
+echo "++ Accept loopback connections"
+iptables  -A INPUT  -p all -s localhost -d localhost -j ACCEPT
+iptables  -A OUTPUT -p all -s localhost -d localhost -j ACCEPT
+ip6tables -A INPUT  -p all -s ip6-localhost -d ip6-localhost -j ACCEPT
+ip6tables -A OUTPUT -p all -s ip6-localhost -d ip6-localhost -j ACCEPT

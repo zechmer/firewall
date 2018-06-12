@@ -1,0 +1,6 @@
+echo "++ Accepting ping on 192"
+iptables -A OUTPUT -p icmp -s 192.168.2.0/24 --icmp-type echo-request -j ACCEPT
+iptables -A INPUT  -p icmp -d 192.168.2.0/24 --icmp-type echo-reply   -j ACCEPT
+
+iptables -A OUTPUT -p icmp -s 132.176.134.0/24 --icmp-type echo-request -j ACCEPT
+iptables -A INPUT  -p icmp -d 132.176.134.0/24 --icmp-type echo-reply   -j ACCEPT

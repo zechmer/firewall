@@ -1,0 +1,7 @@
+echo "++ Accepting connections for tor"
+# Ausgehende Verbindungen für den User debian tor zulassen
+iptables -A OUTPUT -j ACCEPT -m owner --uid-owner debian-tor
+# Lokale Verbindungen zulassen
+iptables -A OUTPUT -j ACCEPT -o lo
+# Synchronisation über ntp zulassen
+iptables -A OUTPUT -j ACCEPT -p udp --dport 123

@@ -1,0 +1,10 @@
+echo "++ Accepting http/https"
+
+# Connection@home
+iptables  -A INPUT  -j ACCEPT -d 192.168.2.0/24 -p tcp -m state --state ESTABLISHED,RELATED -m multiport --sports 80,443
+iptables  -A OUTPUT -j ACCEPT -s 192.168.2.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 80,443
+
+# VPN connection
+iptables  -A INPUT  -j ACCEPT -d 132.176.134.0/24 -p tcp -m state --state ESTABLISHED,RELATED
+iptables  -A OUTPUT -j ACCEPT -s 132.176.134.0/24 -p tcp -m state --state NEW,ESTABLISHED,RELATED -m multiport --dports 80,443
+

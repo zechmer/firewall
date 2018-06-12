@@ -1,0 +1,35 @@
+./variables
+./flush
+./policies
+
+# --------------------------
+# drop packets...
+# --------------------------
+./drop_dirty
+./drop_spoofed
+./drop_smurf
+./drop_syn
+./drop_rfc1918
+./drop_urls
+
+# ----------------------------
+# to enable local connections
+# ----------------------------
+./accept_localhost
+./accept_192dns
+./accept_192ping
+./accept_192ssh
+./accept_192_18083_remotebox
+./accept_192httpsdiskstation
+./accept_192iscsidiskstation
+./accept_192proxydiskstation
+./accept_192httpsrouter
+./accept_192jetdirect
+./accept_192proxies
+
+./accept_tor
+./accept_web
+./accept_email
+#./accept_xmpp
+#./accept_sip
+
